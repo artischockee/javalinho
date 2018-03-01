@@ -3,6 +3,6 @@
 /// the specified laboratory work.
 
 public interface IProgram {
-    void execute();
+    void execute() throws Exception;
     String getProgramName();
 }

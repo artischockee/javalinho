@@ -8,9 +8,10 @@ public class Collection {
     private Vector<IProgram> programs;
 
     Collection() {
-        programs = new Vector<IProgram>();
+        programs = new Vector<>();
 
         programs.add(new ExecUselessActions());
+        programs.add(new ExecStringsTorture());
     }
 
     public void display() {

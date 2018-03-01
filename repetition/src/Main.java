@@ -7,8 +7,8 @@ public class Main {
             collection.display();
 
             System.out.println("Type number of program: ");
-            Scanner scan = new Scanner(System.in);
-            int chosenProgram = scan.nextInt();
+            Scanner input = new Scanner(System.in);
+            int chosenProgram = input.nextInt();
 
             collection.execute(chosenProgram);
         }
