@@ -2,6 +2,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+class ExecUselessActions implements IProgram {
+    private final String programName = "Useless Actions (lab-work-01)";
+    public String getProgramName() { return programName; }
+
+    public void execute() {
+        UselessActions areComing = new UselessActions(8);
+        areComing.perform();
+    }
+}
+
 public class UselessActions {
 
     private Random rand = new Random();
