@@ -12,6 +12,8 @@ public class Collection {
 
         programs.add(new ExecUselessActions());
         programs.add(new ExecStringsTorture());
+        // <- there should be 3rd lab..
+        programs.add(new ExecRussianText());
     }
 
     public void display() {
