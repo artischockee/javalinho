@@ -1,18 +1,15 @@
 import java.util.Vector;
 
-/// Class Collection is used for storing the programs' executors.
-
+// Class 'Collection' is used for storing the programs' executors.
 public class Collection {
-
     private final int initialIndexOfProgram = 1;
-    private Vector<IProgram> programs;
+    private final Vector<IProgram> programs;
 
     Collection() {
         programs = new Vector<>();
 
         programs.add(new ExecUselessActions());
         programs.add(new ExecStringsTorture());
-        // <- there should be 3rd lab..
         programs.add(new ExecRussianText());
     }
 
@@ -23,8 +20,7 @@ public class Collection {
         }
     }
 
-    public void execute(int programIndex) throws Exception
-    {
+    public void execute(int programIndex) throws Exception {
         if (programIndex < initialIndexOfProgram || programIndex > programs.size())
             throw new Exception();
 
