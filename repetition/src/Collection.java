@@ -10,7 +10,7 @@ public class Collection {
 
         programs.add(new ExecUselessActions());
         programs.add(new ExecStringsTorture());
-        programs.add(new ExecCyrillic());
+        programs.add(new ExecRussianText());
     }
 
     public void display() {
