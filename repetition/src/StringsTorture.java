@@ -17,7 +17,6 @@ class ExecStringsTorture implements IProgram {
 }
 
 public class StringsTorture {
-
     private String initialString;
 
     StringsTorture(String string) throws Exception {
