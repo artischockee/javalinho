@@ -2,7 +2,7 @@ import java.util.regex.Pattern;
 import java.util.Scanner;
 
 class ExecRegularExpr implements IProgram {
-    private final String programName = "Regular Expression (lab-work-04)";
+    private final String programName = "Regular Expression (lab-work-04(02))";
     public String getProgramName() { return programName; }
 
     public void execute() throws Exception {
