@@ -11,6 +11,7 @@ public class Collection {
         programs.add(new ExecUselessActions());
         programs.add(new ExecStringsTorture());
         programs.add(new ExecRussianText());
+        programs.add(new ExecRegularExpr());
     }
 
     public void display() {
