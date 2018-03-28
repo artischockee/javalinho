@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-class ExecCyrillic implements IProgram {
-    private final String programName = "Cyrillic Text (lab-work-03)";
+class ExecRussianText implements IProgram {
+    private final String programName = "Russian Text (lab-work-03)";
     public String getProgramName() { return programName; }
 
     public void execute() throws Exception {
@@ -10,14 +10,13 @@ class ExecCyrillic implements IProgram {
         Scanner scanner = new Scanner(System.in);
         String inputStr = scanner.nextLine();
 
-        Cyrillic sentence = new Cyrillic(inputStr);
+        RussianText sentence = new RussianText(inputStr, "  ");
         sentence.performAction();
 
         System.out.println("Result:");
         System.out.println(sentence.getSplittedString());
         System.out.println(sentence.getLetterNumbers());
     }
-
 }
 
 final class NumLength {
@@ -58,16 +57,18 @@ final class CyrillicAlphabet {
     }
 }
 
-class Cyrillic {
+class RussianText {
     private String _initialString;
+    private String _divider;
     private String _splittedString;
     private String _letterNumbers;
 
-    Cyrillic(String initialString) throws Exception {
+    RussianText(String initialString, String divider) throws Exception {
         if (initialString.isEmpty())
             throw new Exception("'RussianText' constructor: argument 'initialString' was empty.");
 
         _initialString = initialString;
+        _divider = divider == null ? "" : divider;
         _splittedString = "";
         _letterNumbers = "";
     }
@@ -76,14 +77,26 @@ class Cyrillic {
     public String getSplittedString() { return _splittedString; }
     public String getLetterNumbers() { return _letterNumbers; }
 
-    private String divideLetters(String initialString, String divider) throws Exception {
+    private String divideLetters(String initialString) throws Exception {
         if (initialString == null || initialString.isEmpty())
             throw new Exception("divideLetters: argument is null or empty");
 
-        return initialString.replaceAll(".", "$0" + divider); // '$0' is a letter definition
+        return initialString.replaceAll(".", "$0" + _divider); // '$0' is a letter definition
     }
 
-    private String appendLetterNumbers() {
+    // clears all '0' zeroes, that represent spaces, commas, etc., from the string
+    private String clearZeroes(String appendedLetterNumbers) throws Exception {
+        if (appendedLetterNumbers == null || appendedLetterNumbers.isEmpty())
+            throw new Exception("'clearZeroes': argument is null or empty.");
+
+        char zero = '0';
+        String regex = " " + zero + " ";
+        String replacement = "   "; // triple whitespace
+
+        return appendedLetterNumbers.replaceAll(regex, replacement);
+    }
+
+    private String appendLetterNumbers() throws Exception {
         String letterNumbers = "";
         int[] numbers = new int[_initialString.length()];
 
@@ -91,25 +104,26 @@ class Cyrillic {
             numbers[i] = CyrillicAlphabet.getLetterPos(Character.toLowerCase(_initialString.charAt(i)));
 
         for (int number: numbers) {
-            // a whitespace is a weak place in this method
             String whitespace = "";
             switch (NumLength.getNumberLength(number)) {
                 case 1:
-                    whitespace = "  ";
+                    whitespace = "  "; // double ws
                     break;
                 case 2:
-                    whitespace = " ";
+                    whitespace = " "; // single ws
                     break;
             }
 
             letterNumbers += Integer.toString(number) + whitespace;
         }
 
+        letterNumbers = clearZeroes(letterNumbers);
+
         return letterNumbers;
     }
 
     public void performAction() throws Exception {
-        _splittedString = divideLetters(_initialString, "  ");
+        _splittedString = divideLetters(_initialString);
         _letterNumbers = appendLetterNumbers();
     }
 }
