@@ -8,13 +8,17 @@ class ExecUselessActions implements IProgram {
 
     public void execute() {
         UselessActions areComing = new UselessActions(8);
-        areComing.perform();
+
+        areComing.foreachOperator("foreach");
+        areComing.whileOperator();
+        areComing.doWhileOperator();
+        areComing.ifelseOperator();
+        areComing.switchOperator();
     }
 }
 
 public class UselessActions {
-
-    private Random rand = new Random();
+    private final Random rand = new Random();
     private int[] _array;
 
     UselessActions(int arraySize) {
@@ -29,50 +33,42 @@ public class UselessActions {
         System.out.printf("A new array with %d random integers has been created.\n", arraySize);
     }
 
-    // Imitates the foreachOperator()
-    private void print() {
-        System.out.println("Content of the array:");
-        for (int number : _array) {
-            System.out.printf("%d ", number);
-        }
-        System.out.println("\n\n");
-    }
-
     // Prints all the numbers in the array
-    private void foreachOperator() {
-        System.out.println("\nForeach Operator");
-        for (int number : _array) {
+    public void foreachOperator(String command) {
+        String consoleMessage = command.equals("foreach") ? "Foreach Operator" : "Content of the array";
+        System.out.println("# " + consoleMessage + ":");
+
+        for (int number : _array)
             System.out.printf("%d ", number);
-        }
-        System.out.println("\n\n");
+        System.out.println("\n");
     }
 
     // Makes some mathematical actions with the array's elements
-    private void whileOperator() {
-        System.out.println("While Operator");
+    public void whileOperator() {
+        System.out.println("# While Operator:");
         int i = _array.length / 2;
         while (i > 0) {
             _array[i] = (i + 2) * 7;
             --i;
         }
 
-        print();
+        foreachOperator("");
     }
 
-    private void doWhileOperator() {
-        System.out.println("Do-while Operator");
+    public void doWhileOperator() {
+        System.out.println("# Do-while Operator:");
         int i = 0;
         int lastElement = _array[_array.length - 1];
         do {
-            _array[i] = lastElement + i;
+            _array[i] = lastElement + 3 * i;
             ++i;
         } while (i < _array.length);
 
-        print();
+        foreachOperator("");
     }
 
-    private void ifelseOperator() {
-        System.out.println("If-Else Operator");
+    public void ifelseOperator() {
+        System.out.println("# If-Else Operator:");
         List<Integer> evensContainer = new ArrayList<>();
         List<Integer> oddsContainer = new ArrayList<>();
 
@@ -90,29 +86,19 @@ public class UselessActions {
         for (int oddNumber: oddsContainer)
             System.out.printf("%d ", oddNumber);
 
-        System.out.println("\n\n");
+        System.out.println("\n");
     }
 
-    private void switchOperator() {
-        System.out.println("Switch Operator");
+    public void switchOperator() {
+        System.out.println("# Switch Operator:");
         int randomNumber = _array[rand.nextInt(_array.length)];
         System.out.printf("Random number: %d\n", randomNumber);
-        randomNumber %= 2;
-        switch (randomNumber) {
-            case 0:
-                System.out.println("A random number is even number");
-                break;
-            case 1:
-                System.out.println("A random number is odd number");
-                break;
-        }
-    }
 
-    public void perform() {
-        foreachOperator();
-        whileOperator();
-        doWhileOperator();
-        ifelseOperator();
-        switchOperator();
+        int parity = randomNumber % 2;
+        String message = parity == 0 ?
+                "A random number is even number." :
+                "A random number is odd number.";
+
+        System.out.println(message);
     }
 }
