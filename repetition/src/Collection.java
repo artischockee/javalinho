@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Vector;
 
 // Class 'Collection' is used for storing the programs' executors.
@@ -6,12 +7,10 @@ public class Collection {
     private final Vector<IProgram> programs;
 
     Collection() {
-        programs = new Vector<>();
-
-        programs.add(new ExecUselessActions());
-        programs.add(new ExecStringsTorture());
-        programs.add(new ExecRussianText());
-        programs.add(new ExecRegularExpr());
+        programs = new Vector<>(Arrays.asList(
+                new ExecUselessActions(), new ExecStringsTorture(),
+                new ExecRussianText(), new ExecRegularExpr(),
+                new ExecMeinKollektion()));
     }
 
     public void display() {
