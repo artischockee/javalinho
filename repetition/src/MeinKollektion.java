@@ -13,12 +13,15 @@ class ExecMeinKollektion implements IProgram {
     }
 
     public void execute() throws Exception {
-        Vector<Integer> list = new Vector<>(Arrays.asList(1, 2, 5, -3, -4, 6, -7, 9, -10, 8));
+        Vector<Integer> list = new Vector<>(Arrays.asList(1, 5, 2, -3, -4, 6, -7, 9, -10, 8));
+        System.out.println("You have the next array:");
+        display(list);
 
         MeinKollektion mk = new MeinKollektion(list);
         mk.sortNumericList();
         Vector<Integer> sortedList = mk.getNumericList();
 
+        System.out.println("The array after the sorting:");
         display(sortedList);
     }
 }
@@ -36,6 +39,12 @@ class MeinKollektion {
     public Vector<Integer> getNumericList() { return _numericList; }
 
     public void sortNumericList() {
+        int listSize = _numericList.size();
+        if (listSize <= 1) {
+            System.out.printf("'sortNumericList': there is nothing to sort (array size is %d).\n", listSize);
+            return;
+        }
+
         Collections.sort(_numericList, (a, b) -> a <= 0 ? 1 : b <= 0 ? -1 : 0);
     }
 }
