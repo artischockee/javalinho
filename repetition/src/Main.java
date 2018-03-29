@@ -6,7 +6,7 @@ public class Main {
             Collection collection = new Collection();
             collection.display();
 
-            System.out.println("Type number of program: ");
+            System.out.printf("Type number of program:\n> ");
             Scanner input = new Scanner(System.in);
             int chosenProgram = input.nextInt();
 

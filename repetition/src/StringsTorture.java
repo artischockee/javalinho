@@ -5,7 +5,7 @@ class ExecStringsTorture implements IProgram {
     public String getProgramName() { return programName; }
 
     public void execute() throws Exception {
-        System.out.println("Write your string:");
+        System.out.printf("Write your string:\n> ");
 
         Scanner scanner = new Scanner(System.in);
         String inputStr = scanner.nextLine();

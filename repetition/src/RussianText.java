@@ -5,7 +5,7 @@ class ExecRussianText implements IProgram {
     public String getProgramName() { return programName; }
 
     public void execute() throws Exception {
-        System.out.println("Write your string in Russian:");
+        System.out.printf("Write your string in Russian:\n> ");
 
         Scanner scanner = new Scanner(System.in);
         String inputStr = scanner.nextLine();

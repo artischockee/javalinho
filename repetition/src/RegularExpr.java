@@ -6,7 +6,7 @@ class ExecRegularExpr implements IProgram {
     public String getProgramName() { return programName; }
 
     public void execute() throws Exception {
-        System.out.println("Write a hexadecimal value of color (example: #FF0000):");
+        System.out.printf("Write a hexadecimal value of color (example: #FF0000):\n> ");
 
         Scanner scanner = new Scanner(System.in);
         String inputStr = scanner.nextLine();
