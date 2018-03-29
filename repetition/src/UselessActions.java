@@ -33,6 +33,8 @@ public class UselessActions {
         System.out.printf("A new array with %d random integers has been created.\n", arraySize);
     }
 
+    public int[] getArray() { return _array; }
+
     // Prints all the numbers in the array
     public void foreachOperator(String command) {
         String consoleMessage = command.equals("foreach") ? "Foreach Operator" : "Content of the array";
@@ -55,6 +57,7 @@ public class UselessActions {
         foreachOperator("");
     }
 
+    // Makes some mathematical actions with the array's elements
     public void doWhileOperator() {
         System.out.println("# Do-while Operator:");
         int i = 0;
@@ -67,6 +70,7 @@ public class UselessActions {
         foreachOperator("");
     }
 
+    // Splits the array into two separate List containers for even and odd numbers
     public void ifelseOperator() {
         System.out.println("# If-Else Operator:");
         List<Integer> evensContainer = new ArrayList<>();
@@ -89,6 +93,7 @@ public class UselessActions {
         System.out.println("\n");
     }
 
+    // Takes one random number from the existing array and
     public void switchOperator() {
         System.out.println("# Switch Operator:");
         int randomNumber = _array[rand.nextInt(_array.length)];
