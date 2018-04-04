@@ -6,7 +6,7 @@ class ExecRegularExpr implements IProgram {
     public String getProgramName() { return programName; }
 
     public void execute() throws Exception {
-        System.out.printf("Write a hexadecimal value of color (example: #FF0000):\n> ");
+        System.out.print("Write a hexadecimal value of color (example: #FF0000, #bf4):\n> ");
 
         Scanner scanner = new Scanner(System.in);
         String inputStr = scanner.nextLine();
@@ -21,8 +21,13 @@ class ExecRegularExpr implements IProgram {
 
 final class RegularExpr {
     private static final String _hexColorPattern = "#[a-fA-F_0-9]{6}"; // hash and any of (a-f) letter and (0-9) digit 6 times
+    private static final String _hexColorPatternShort = "#[a-fA-F_0-9]{3}"; // the same as above but only 3 times (short hex color notation)
 
-    public static boolean matchesHexColor(String initialString) {
-        return Pattern.matches(_hexColorPattern, initialString);
+    public static boolean matchesHexColor(String initialString) throws Exception {
+        if (initialString == null || initialString.isEmpty())
+            throw new Exception("matchesHexColor: initial string is null or empty.");
+
+        return Pattern.matches(_hexColorPattern, initialString)
+                || Pattern.matches(_hexColorPatternShort, initialString);
     }
 }
