@@ -4,6 +4,7 @@ import java.util.Vector;
 
 public class TwentyOnePoints {
     public static final int DECK_SIZE = 36;
+    public static final int MAX_SCORE = 21;
     private Stack<Card> _cardDeck;
     private Vector<CardPlayer> _cardPlayers;
 
@@ -25,7 +26,7 @@ public class TwentyOnePoints {
 
     // ..
 
-    public void playGame() {
+    public void playGame() throws Exception {
         System.out.println("Hello and welcome to 'Twenty One Points' game!");
         System.out.println("The deck will right now be shuffled.");
         shuffleDeck();
@@ -35,7 +36,26 @@ public class TwentyOnePoints {
         _cardPlayers.add(new Player());
         _cardPlayers.elementAt(0).setDealer(true);
 
+        // first card distribution
+        for (CardPlayer cardPlayer : _cardPlayers) {
+            // TODO: 4/6/18 add exception handling in case of cardDeck is empty
+            cardPlayer.addCard(_cardDeck.pop());
+        }
 
-//        if (computer.getClass() == Computer.class)
+        for (CardPlayer cardPlayer : _cardPlayers) {
+            if (cardPlayer.getClass() == Player.class) {
+                while (!cardPlayer.hasPassed() && !cardPlayer.hasExceeded()) {
+                    TurnAnswer ans = cardPlayer.analyzeTurn();
+                    switch (ans) {
+                        case TAKE:
+                            cardPlayer.addCard(_cardDeck.pop());
+                            break;
+                        case PASS:
+                            cardPlayer.setPass(true);
+                            break;
+                    }
+                }
+            }
+        }
     }
 }
