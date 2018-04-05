@@ -1,6 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
+import java.util.Stack;
 
 enum Suit {
     DIAMONDS, CLUBS, HEARTS, SPADES;
@@ -86,6 +86,10 @@ class Card {
         return _cardName.getSymbol();
     }
 
+    public int getCardWeight() {
+        return _cardWeight;
+    }
+
     Card(Suit suit, CardName cardName, int cardWeight) throws Exception {
         if (cardWeight <= 0)
             throw new Exception("Error in argument 'cardWeight': negative value.");
@@ -116,13 +120,13 @@ final class CardDeckCreator {
         WEIGHT_MAP_TWENTY_ONE.put(CardName.ACE, 11);
     }
 
-    public static Vector<Card> createDeck(int deckSize) throws Exception {
+    public static Stack<Card> createDeck(int deckSize) throws Exception {
         if (deckSize != TwentyOnePoints.DECK_SIZE) {
             throw new Exception("There is no suitable deck size for the specified number.");
             // this is probably a blank for further improvements (e.g. different deck size)
         }
 
-        Vector<Card> deck = new Vector<>();
+        Stack<Card> deck = new Stack<>();
 
         for (CardName cardName: CardName.values())
             for (Suit suit: Suit.values())
