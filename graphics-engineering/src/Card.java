@@ -93,7 +93,7 @@ class Card {
     Card(Suit suit, CardName cardName, int cardWeight) throws Exception {
         if (cardWeight <= 0)
             throw new Exception("Error in argument 'cardWeight': negative value.");
-        // here should probably be another arguments checking
+        // TODO: 4/6/18 here should probably be another arguments checking
 
         _suit = suit;
         _cardName = cardName;
@@ -101,7 +101,7 @@ class Card {
     }
 
     public void show() {
-        System.out.printf("%s : %s (%s) : weight: %s\n", _cardName.getSymbol(), _suit.getSymbol(), _suit, _cardWeight);
+        System.out.printf("%s : %s (%s) : %s points\n", _cardName.getSymbol(), _suit.getSymbol(), _suit, _cardWeight);
     }
 }
 
@@ -123,7 +123,7 @@ final class CardDeckCreator {
     public static Stack<Card> createDeck(int deckSize) throws Exception {
         if (deckSize != TwentyOnePoints.DECK_SIZE) {
             throw new Exception("There is no suitable deck size for the specified number.");
-            // this is probably a blank for further improvements (e.g. different deck size)
+            // TODO: 4/6/18 this is probably a blank for further improvements (e.g. different deck size)
         }
 
         Stack<Card> deck = new Stack<>();
