@@ -1,53 +1,22 @@
-import java.util.Vector;
-
-public class Computer implements CardPlayer {
-    private static int _playerIndex;
-    private Vector<Card> _cardDeck;
-    private String _playerName;
-    private boolean _isDealer;
+public class Computer extends CardPlayer {
+    private static int _computerIndex;
 
     static {
-        _playerIndex = 0;
+        _computerIndex = 0;
     }
 
-    Computer() {
-        _cardDeck = new Vector<>();
-        _playerName = "Computer " + ++_playerIndex;
-        _isDealer = false;
+    Computer() throws Exception {
+        super("Computer " + ++_computerIndex);
     }
 
+    @Override
     public int getPlayerIndex() {
-        return _playerIndex;
+        return _computerIndex;
     }
 
     @Override
-    public boolean isDealer() {
-        return _isDealer;
+    public TurnAnswer analyzeTurn() throws Exception  {
+        // here is a computer logic..
+        return TurnAnswer.PASS; // tmp
     }
-
-    @Override
-    public void setDealer(boolean state) {
-        _isDealer = state;
-    }
-
-    @Override
-    public String getPlayerName() {
-        return _playerName;
-    }
-
-    @Override
-    public int getPointsAmount() {
-        int pointsAmount = 0;
-        for (Card card : _cardDeck)
-            pointsAmount += card.getCardWeight();
-
-        return pointsAmount;
-    }
-
-    @Override
-    public void getCard(Card card) {
-        _cardDeck.add(card);
-    }
-
-
 }
