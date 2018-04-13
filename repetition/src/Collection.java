@@ -9,7 +9,7 @@ public class Collection {
     Collection() {
         programs = new Vector<>(Arrays.asList(
                 new ExecUselessActions(), new ExecStringsTorture(), new ExecRussianText(),
-                new ExecRegularExpr(), new ExecMeinKollektion()));
+                new ExecRegularExpr(), new ExecMyCollection()));
     }
 
     public void display() {
