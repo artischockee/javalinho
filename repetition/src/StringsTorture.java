@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class ExecStringsTorture implements IProgram {
+class ExecStringsTorture implements Program {
     private final String programName = "Strings Torture (lab-work-02)";
     public String getProgramName() { return programName; }
 

@@ -4,7 +4,7 @@ import java.util.Vector;
 // Class 'Collection' is used for storing the programs' executors.
 public class Collection {
     private final int initialIndexOfProgram = 1;
-    private final Vector<IProgram> programs;
+    private final Vector<Program> programs;
 
     Collection() {
         programs = new Vector<>(Arrays.asList(
@@ -14,7 +14,7 @@ public class Collection {
 
     public void display() {
         int index = initialIndexOfProgram;
-        for (IProgram program : programs) {
+        for (Program program : programs) {
             System.out.printf("[%d] %s\n", index++, program.getProgramName());
         }
     }

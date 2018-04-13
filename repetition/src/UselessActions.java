@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-class ExecUselessActions implements IProgram {
+class ExecUselessActions implements Program {
     private final String programName = "Useless Actions (lab-work-01)";
     public String getProgramName() { return programName; }
 

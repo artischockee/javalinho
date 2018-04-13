@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class ExecRussianText implements IProgram {
+class ExecRussianText implements Program {
     private final String programName = "Russian Text (lab-work-03(01))";
     public String getProgramName() { return programName; }
 
