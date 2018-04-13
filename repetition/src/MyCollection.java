@@ -5,7 +5,7 @@ class ExecMyCollection implements Program {
     private final String programName = "My collection (lab-work-05(03))";
     public String getProgramName() { return programName; }
 
-    private final int _vectorSize = 65536;
+    private final int _vectorSize = 48;
     private final int _lowerBound = -50;
     private final int _upperBound = 50;
 
@@ -19,6 +19,7 @@ class ExecMyCollection implements Program {
         Vector<Integer> vector = new Vector<>();
         Random random = new Random();
 
+        // random generates numbers between the lower and the upper bounds
         for (int i = 0; i < size; ++i)
             vector.add(random.nextInt(_upperBound + 1 - _lowerBound) + _lowerBound);
 
@@ -31,9 +32,9 @@ class ExecMyCollection implements Program {
         System.out.println("You have the next array:");
         display(list);
 
-        MyCollection mk = new MyCollection(list);
-        mk.sortNumericList();
-        Vector<Integer> sortedList = mk.getNumericList();
+        MyCollection mc = new MyCollection(list);
+        mc.sortNumericList();
+        Vector<Integer> sortedList = mc.getNumericList();
 
         System.out.println("The array after the sorting:");
         display(sortedList);
@@ -66,8 +67,8 @@ class MyCollection {
         }
 
         _numericList.sort((a, b) ->
-            a > 0 && b <= 0 ? -1 :
-            a <= 0 && b <= 0 ? 0 :
-            a <= 0 ? 1 : 0);
+            a >= 0 && b < 0 ? -1 :
+            a < 0 && b < 0 ? 0 :
+            a < 0 ? 1 : 0);
     }
 }
