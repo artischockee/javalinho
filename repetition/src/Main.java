@@ -1,19 +1,28 @@
 import java.util.Scanner;
 
 public class Main {
+    private static final Scanner SCANNER = new Scanner(System.in);
+
+    private static int scanValidNumber() {
+        int number;
+
+        do {
+            System.out.print("> ");
+            number = SCANNER.nextInt();
+        } while (number < Collection.LOWER_BOUND || number > Collection.UPPER_BOUND);
+
+        return number;
+    }
+
     public static void main(String[] args) {
         try {
-            Collection collection = new Collection();
-            collection.display();
-
-            System.out.printf("Type number of program:\n> ");
-            Scanner input = new Scanner(System.in);
-            int chosenProgram = input.nextInt();
-
-            collection.execute(chosenProgram);
+            Collection.display();
+            System.out.println("Select a program by its number:");
+            int chosenProgram = scanValidNumber();
+            Collection.execute(chosenProgram);
         }
         catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }
