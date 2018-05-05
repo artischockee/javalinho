@@ -35,13 +35,13 @@ class ExecBitOperations implements Program {
         Vector<BitOperations.PartConstraints> partConstraints = new Vector<>(partsAmount);
 
         partConstraints.add(new BitOperations.PartConstraints
-            ("C", 15, 14, 2)
+                ("C", 15, 14, 2)
         );
         partConstraints.add(new BitOperations.PartConstraints
-            ("F", 13, 12, 1)
+                ("F", 13, 12, 1)
         );
         partConstraints.add(new BitOperations.PartConstraints
-            ("D", 11, 0, 4011)
+                ("D", 11, 0, 4011)
         );
 
         BitOperations bitOperations = new BitOperations(partConstraints);
